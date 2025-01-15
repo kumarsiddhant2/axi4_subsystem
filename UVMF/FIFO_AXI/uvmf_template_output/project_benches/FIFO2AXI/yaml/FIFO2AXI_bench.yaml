@@ -1,0 +1,51 @@
+uvmf:
+  benches:
+    FIFO2AXI:
+      active_passive:
+      - bfm_name: FIFO_agent
+        value: ACTIVE
+      - bfm_name: AXI4_SLAVE_agent
+        value: ACTIVE
+      active_passive_default: ACTIVE
+      clock_half_period: 5ns
+      clock_phase_offset: 9ns
+      existing_library_component: 'True'
+      interface_params: []
+      parameters:
+      - name: FIFO_DATA_WIDTH
+        type: bit
+        value: '128'
+      - name: FIFO_ADDR_WIDTH
+        type: bit
+        value: '32'
+      - name: AXI_ADDR_WIDTH
+        type: bit
+        value: '32'
+      - name: AXI_WID_WIDTH
+        type: bit
+        value: '4'
+      - name: AXI_LEN_WIDTH
+        type: bit
+        value: '4'
+      - name: AXI_SIZE_WIDTH
+        type: bit
+        value: '3'
+      - name: AXI_BURST_WIDTH
+        type: bit
+        value: '2'
+      - name: AXI_LOCK_WIDTH
+        type: bit
+        value: '2'
+      - name: AXI_CACHE_WIDTH
+        type: bit
+        value: '2'
+      - name: AXI_PROT_WIDTH
+        type: bit
+        value: '3'
+      - name: AXI_STRB_WIDTH
+        type: bit
+        value: '4'
+      reset_assertion_level: 'True'
+      reset_duration: 200ns
+      top_env: FIFO2AXI
+      use_dpi_link: 'False'

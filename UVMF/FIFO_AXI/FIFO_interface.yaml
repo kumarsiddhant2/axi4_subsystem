@@ -1,0 +1,88 @@
+uvmf:
+  interfaces:
+    FIFO_in:
+      clock: clk
+      reset: rst
+      reset_assertion_level: 'True'
+
+      config_constraints: []
+      config_vars: []
+
+      ports:
+      - name: wr_en
+        dir: output
+        width: '1'
+      - name: rd_en
+        dir: output
+        width: '1'
+      - name: wr_data
+        dir: output
+        width: '128' 
+      - name: rd_data
+        dir: input
+        width: '128'
+      - name: full
+        dir: input
+        width: '1'
+      - name: empty
+        dir: input
+        width: '1'
+
+      response_info:
+        data: []
+        operation: 1'b1
+
+      transaction_vars:
+      - name: sop
+        type: bit [7:0]
+        iscompare: 'True'
+        isrand: 'False'
+      - name: txn_id
+        type: bit [3:0]
+        iscompare: 'True'
+        isrand: 'True'
+      - name: addr
+        type: bit [31:0]
+        iscompare: 'True'
+        isrand: 'True'
+      - name: len
+        type: bit [3:0]
+        iscompare: 'True'
+        isrand: 'True'
+      - name: size
+        type: bit [2:0]
+        iscompare: 'True'
+        isrand: 'True'
+      - name: burst
+        type: bit [1:0]
+        iscompare: 'True'
+        isrand: 'True'
+      - name: lock
+        type: bit [1:0]
+        iscompare: 'True'
+        isrand: 'True'
+      - name: cache
+        type: bit [1:0]
+        iscompare: 'True'
+        isrand: 'True'
+      - name: prot
+        type: bit [2:0]
+        iscompare: 'True'
+        isrand: 'True'
+      - name: strobe
+        type: bit [3:0]
+        iscompare: 'True'
+        isrand: 'True'
+      - name: wdata
+        type: bit [127:0]
+        iscompare: 'True'
+        isrand: 'True'
+      - name: rdata
+        type: bit [127:0]
+        iscompare: 'True'
+        isrand: 'False'
+      - name: eop
+        type: bit [7:0]
+        iscompare: 'True'
+        isrand: 'False'
+

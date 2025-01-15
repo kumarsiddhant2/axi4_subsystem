@@ -1,0 +1,3 @@
+$UVMF_VIP_LIBRARY_HOME/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_if.sv
+$UVMF_VIP_LIBRARY_HOME/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_monitor_bfm.sv
+$UVMF_VIP_LIBRARY_HOME/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv

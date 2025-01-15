@@ -1,0 +1,1 @@
+$UVMF_VIP_LIBRARY_HOME/interface_packages/AXI4_SLAVE_pkg/AXI4_SLAVE_pkg.sv

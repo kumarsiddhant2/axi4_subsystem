@@ -1,0 +1,14 @@
+//----------------------------------------------------------------------
+// Created with uvmf_gen version 2023.3
+//----------------------------------------------------------------------
+// pragma uvmf custom header begin
+// pragma uvmf custom header end
+//----------------------------------------------------------------------
+//----------------------------------------------------------------------
+//
+
+,
+Interface Description, Interface Type, Interface Transaction, Interface Name,
+FIFO_agent, FIFO_in_driver_bfm FIFO_in_monitor_bfm, FIFO_in_transaction, FIFO_in_pkg_FIFO_agent_BFM,
+AXI4_SLAVE_agent, AXI4_SLAVE_driver_bfm AXI4_SLAVE_monitor_bfm, AXI4_SLAVE_transaction, AXI4_SLAVE_pkg_AXI4_SLAVE_agent_BFM,
+

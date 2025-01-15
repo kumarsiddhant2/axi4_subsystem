@@ -1,0 +1,87 @@
+# vsim -c -sv_seed random "+UVM_TESTNAME=test_top" -permit_unmatched_virtual_intf "+notimingchecks" -suppress 8887 -solvefaildebug -solvefailtestcase -uvmcontrol=none -printsimstats -do " coverage save -onexit test_top.ucdb; set IterationLimit 140000; set NoQuitOnFinish 1;   run -all; quit -f;" optimized_batch_top_tb 
+# Start time: 21:28:55 on Jan 11,2025
+# //  Questa Sim
+# //  Version 10.6c linux Jul 25 2017
+# //
+# //  Copyright 1991-2017 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.AXI4_SLAVE_driver_bfm(fast)
+# Loading work.AXI4_SLAVE_monitor_bfm(fast)
+# Loading work.uvmf_base_pkg_hdl(fast)
+# Loading work.AXI4_SLAVE_pkg_hdl(fast)
+# Loading mtiUvm.uvm_pkg
+# Loading work.uvmf_base_pkg(fast)
+# Loading work.AXI4_SLAVE_pkg(fast)
+# Loading work.FIFO_in_driver_bfm(fast)
+# Loading work.FIFO_in_monitor_bfm(fast)
+# Loading work.FIFO_in_pkg_hdl(fast)
+# Loading work.FIFO_in_pkg(fast)
+# Loading work.FIFO2AXI_env_pkg(fast)
+# Loading work.FIFO2AXI_parameters_pkg(fast)
+# Loading work.FIFO2AXI_sequences_pkg(fast)
+# Loading work.FIFO2AXI_tests_pkg(fast)
+# Loading work.hvl_top(fast)
+# Loading work.AXI4_SLAVE_if_sv_unit(fast)
+# Loading work.FIFO_in_if_sv_unit(fast)
+# Loading work.hdl_top(fast)
+# Loading work.FIFO_in_monitor_bfm_sv_unit(fast)
+# Loading work.FIFO_in_monitor_bfm(fast)
+# Loading work.AXI4_SLAVE_monitor_bfm_sv_unit(fast)
+# Loading work.AXI4_SLAVE_monitor_bfm(fast)
+# Loading work.FIFO_in_driver_bfm_sv_unit(fast)
+# Loading work.FIFO_in_driver_bfm(fast)
+# Loading work.AXI4_SLAVE_driver_bfm_sv_unit(fast)
+# Loading work.AXI4_SLAVE_driver_bfm(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.vhdl_dut(rtl)#1
+# ** Error: (vsim-8220) /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv(244): This or another usage of 'bus.ARREADY_a' inconsistent with 'net' object.
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/AXI4_SLAVE_agent_drv_bfm File: /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv
+# ** Error: (vsim-8220) /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv(234): This or another usage of 'bus.AWREADY_a' inconsistent with 'net' object.
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/AXI4_SLAVE_agent_drv_bfm File: /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv
+# ** Error: (vsim-8220) /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv(238): This or another usage of 'bus.BID_a' inconsistent with 'net' object.
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/AXI4_SLAVE_agent_drv_bfm File: /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv
+# ** Error: (vsim-8220) /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv(240): This or another usage of 'bus.BRESP_a' inconsistent with 'net' object.
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/AXI4_SLAVE_agent_drv_bfm File: /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv
+# ** Error: (vsim-8220) /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv(242): This or another usage of 'bus.BVALID_a' inconsistent with 'net' object.
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/AXI4_SLAVE_agent_drv_bfm File: /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv
+# ** Error: (vsim-8220) /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv(248): This or another usage of 'bus.RDATA_a' inconsistent with 'net' object.
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/AXI4_SLAVE_agent_drv_bfm File: /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv
+# ** Error: (vsim-8220) /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv(246): This or another usage of 'bus.RID_a' inconsistent with 'net' object.
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/AXI4_SLAVE_agent_drv_bfm File: /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv
+# ** Error: (vsim-8220) /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv(252): This or another usage of 'bus.RLAST_a' inconsistent with 'net' object.
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/AXI4_SLAVE_agent_drv_bfm File: /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv
+# ** Error: (vsim-8220) /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv(250): This or another usage of 'bus.RRESP_a' inconsistent with 'net' object.
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/AXI4_SLAVE_agent_drv_bfm File: /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv
+# ** Error: (vsim-8220) /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv(254): This or another usage of 'bus.RVALID_a' inconsistent with 'net' object.
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/AXI4_SLAVE_agent_drv_bfm File: /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv
+# ** Error: (vsim-8220) /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv(236): This or another usage of 'bus.WREADY_a' inconsistent with 'net' object.
+#    Time: 0 ns  Iteration: 0  Instance: /hdl_top/AXI4_SLAVE_agent_drv_bfm File: /hwetools/work_area/frontend/siddhant/UVMF/FIFO_AXI/uvmf_template_output/project_benches/FIFO2AXI/sim/../../../verification_ip/interface_packages/AXI4_SLAVE_pkg/src/AXI4_SLAVE_driver_bfm.sv
+# Error loading design
+# Memory Statistics                         
+#     mem: size after elab (VSZ)                   0.00 Kb
+#     mem: size during sim (VSZ)                  73.75 Mb
+# Elaboration Time                          
+#    elab: wall time                               0.00 s
+#    elab: cpu time                                0.00 s
+# Simulation Time                           
+#     sim: wall time                               0.06 s
+#     sim: cpu time                                0.00 s
+# Total Time                                
+#   total: wall time                               0.06 s
+#   total: cpu time                                0.00 s
+# 
+# End time: 21:28:56 on Jan 11,2025, Elapsed time: 0:00:01
+# Errors: 11, Warnings: 0

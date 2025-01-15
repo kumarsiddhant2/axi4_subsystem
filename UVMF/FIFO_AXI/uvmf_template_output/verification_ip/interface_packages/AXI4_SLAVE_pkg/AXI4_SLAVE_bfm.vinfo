@@ -1,0 +1,6 @@
+@use $UVMF_HOME/uvmf_base_pkg/uvmf_base_pkg_hdl.vinfo
+@use AXI4_SLAVE_pkg_hdl.vinfo
++incdir+@vinfodir
+src/AXI4_SLAVE_if.sv
+src/AXI4_SLAVE_driver_bfm.sv
+src/AXI4_SLAVE_monitor_bfm.sv

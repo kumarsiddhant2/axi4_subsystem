@@ -1,0 +1,11 @@
+uvmf:
+  util_components:
+    FIFO2AXI_predictor:
+      analysis_exports:
+      - name: FIFO_agent_ae
+        type: FIFO_in_transaction
+      analysis_ports:
+      - name: FIFO2AXI_sb_ap
+        type: AXI4_SLAVE_transaction
+      existing_library_component: 'True'
+      type: predictor

@@ -1,0 +1,481 @@
+uvmf:
+  interfaces:
+    AXI4_SLAVE:
+      clock: ACLK
+      config_constraints: []
+      config_vars: []
+      existing_library_component: 'True'
+      gen_inbound_streaming_driver: 'False'
+      hdl_pkg_parameters: []
+      hdl_typedefs:
+      - name: awburst_e
+        type: enum bit[1:0] {WRITE_FIXED, WRITE_INCR, WRITE_WRAP,WRITE_RESERVED}
+      - name: arburst_e
+        type: enum bit[1:0] {READ_FIXED, READ_INCR, READ_WRAP,READ_RESERVED}
+      - name: awsize_e
+        type: enum bit[2:0] {WRITE_1_BYTE, WRITE_2_BYTE, WRITE_4_BYTE, WRITE_8_BYTE, WRITE_16_BYTE, WRITE_32_BYTE, WRITE_64_BYTE, WRITE_128_BYTE}
+      - name: arsize_e
+        type: enum bit[2:0] {READ_1_BYTE, READ_2_BYTE, READ_4_BYTE, READ_8_BYTE, READ_16_BYTE, READ_32_BYTE, READ_64_BYTE, READ_128_BYTE}
+      - name: awlock_e
+        type: enum bit {WRITE_NORMAL_ACCESS, WRITE_EXCLUSIVE_ACCESS}
+      - name: arlock_e
+        type: enum bit {READ_NORMAL_ACCESS, READ_EXCLUSIVE_ACCESS}
+      - name: awcache_e
+        type: enum bit[1:0] {WRITE_BUFFERABLE, WRITE_MODIFIABLE, WRITE_OTHER_ALLOCATE, WRITE_ALLOCATE}
+      - name: arcache_e
+        type: enum bit[1:0] {READ_BUFFERABLE, READ_MODIFIABLE, READ_OTHER_ALLOCATE, READ_ALLOCATE}
+      - name: endian_e
+        type: enum bit {BIG_ENDIAN, LITTLE_ENDIAN}
+      - name: awprot_e
+        type: enum bit[2:0] {WRITE_NORMAL_SECURE_DATA, WRITE_NORMAL_SECURE_INSTRUCTION, WRITE_NORMAL_NONSECURE_DATA, WRITE_NORMAL_NONSECURE_INSTRUCTION, WRITE_PRIVILEGED_SECURE_DATA, WRITE_PRIVILEGED_SECURE_INSTRUCTION, WRITE_PRIVILEGED_NONSECURE_DATA, WRITE_PRIVILEGED_NONSECURE_INSTRUCTION}
+      - name: arprot_e
+        type: enum bit[2:0] {READ_NORMAL_SECURE_DATA, READ_NORMAL_SECURE_INSTRUCTION, READ_NORMAL_NONSECURE_DATA, READ_NORMAL_NONSECURE_INSTRUCTION, READ_PRIVILEGED_SECURE_DATA, READ_PRIVILEGED_SECURE_INSTRUCTION, READ_PRIVILEGED_NONSECURE_DATA, READ_PRIVILEGED_NONSECURE_INSTRUCTION}
+      - name: awid_e
+        type: enum bit[15:0] {AWID_0, AWID_1, AWID_2, AWID_3, AWID_4, AWID_5, AWID_6, AWID_7, AWID_8, AWID_9, AWID_10, AWID_11, AWID_12, AWID_13, AWID_14, AWID_15}
+      - name: arid_e
+        type: enum bit[15:0] {ARID_0, ARID_1, ARID_2, ARID_3, ARID_4, ARID_5, ARID_6, ARID_7, ARID_8, ARID_9, ARID_10, ARID_11, ARID_12, ARID_13, ARID_14, ARID_15}
+      - name: bid_e
+        type: enum bit[15:0] {BID_0, BID_1, BID_2, BID_3, BID_4, BID_5, BID_6, BID_7, BID_8, BID_9, BID_10, BID_11, BID_12, BID_13, BID_14, BID_15}
+      - name: rid_e
+        type: enum bit[15:0] {RID_0, RID_1, RID_2, RID_3, RID_4, RID_5, RID_6, RID_7, RID_8, RID_9, RID_10, RID_11, RID_12, RID_13, RID_14, RID_15}
+      - name: bresp_e
+        type: enum bit[1:0] {WRITE_OKAY, WRITE_EXOKAY, WRITE_SLVERR, WRITE_DECERR}
+      - name: rresp_e
+        type: enum bit[1:0] {READ_OKAY, READ_EXOKAY, READ_SLVERR, READ_DECERR}
+      - name: tx_type_e
+        type: enum bit {READ, WRITE}
+      - name: transfer_type_e
+        type: enum bit[1:0] {BLOCKING_WRITE, BLOCKING_READ, NON_BLOCKING_WRITE, NON_BLOCKING_READ}
+      - name: read_data_type_mode_e
+        type: enum bit[1:0] {RANDOM_DATA_MODE, SLAVE_MEM_MODE, USER_DATA_MODE, SLAVE_ERR_RESP_MODE}
+      - name: write_read_data_mode_e
+        type: enum bit[1:0] {ONLY_WRITE_DATA, ONLY_READ_DATA, WRITE_READ_DATA}
+      - name: response_mode_e
+        type: enum bit[1:0] {RESP_IN_ORDER, ONLY_READ_RESP_OUT_OF_ORDER, WRITE_READ_RESP_OUT_OF_ORDER, ONLY_WRITE_RESP_OUT_OF_ORDER}
+      - name: qos_mode_e
+        type: enum bit[1:0] {QOS_MODE_DISABLE, ONLY_READ_QOS_MODE_ENABLE, WRITE_READ_QOS_MODE_ENABLE, ONLY_WRITE_QOS_MODE_ENABLE}
+      - name: axi4_write_transfer_char_s
+        type: struct {bit [3:0] awid; bit [31:0] awaddr; bit [7:0] awlen; bit [2:0] awsize; bit [1:0] awburst; bit awlock; bit [3:0] awcache; bit [3:0] awqos; bit [3:0] awregion; bit awuser; bit [2:0] awprot; bit awvalid; bit awready; bit [2**8:0][31:0] wdata; bit [2**8:0][3:0] wstrb; bit [2**8:0] wuser; bit wlast; bit [3:0] bid; bit [1:0] bresp; bit buser; bit bvalid; bit tx_type; int wait_count_write_address_channel; int wait_count_write_data_channel; int wait_count_write_response_channel; int outstanding_write_tx; int no_of_wait_states;}
+      - name: axi4_read_transfer_char_s
+        type: struct {bit [3:0] arid; bit [31:0] araddr; bit [7:0] arlen; bit [2:0] arsize; bit [1:0] arburst; bit [3:0] arcache; bit [2:0] arprot; bit [3:0] arqos; bit [3:0] arregion; bit [3:0] aruser; bit arlock; bit [3:0] rid; bit [2**8:0][31:0] rdata; bit [2**8:0][1:0] rresp; bit [2**8:0][3:0] ruser; bit rlast; bit rvalid; bit tx_type; int wait_count_read_address_channel; int wait_count_read_data_channel; int outstanding_read_tx; int no_of_wait_states;}
+      - name: axi4_transfer_cfg_s
+        type: struct {bit [31:0] min_address; bit [31:0] max_address; int wait_count_write_address_channel; int wait_count_write_data_channel; int wait_count_write_response_channel; int wait_count_read_address_channel; int wait_count_read_data_channel; int outstanding_write_tx; int outstanding_read_tx; response_mode_e slave_response_mode; qos_mode_e qos_mode_type;}
+      hvl_pkg_parameters: []
+      hvl_typedefs: []
+      parameters: []
+      ports:
+      - dir: input
+        name: AWID_a
+        reset_value: '''b0'
+        width: '4'
+      - dir: input
+        name: AWADDR_a
+        reset_value: '''b0'
+        width: '32'
+      - dir: input
+        name: AWLEN_a
+        reset_value: '''b0'
+        width: '4'
+      - dir: input
+        name: AWSIZE_a
+        reset_value: '''b0'
+        width: '3'
+      - dir: input
+        name: AWBURST_a
+        reset_value: '''b0'
+        width: '2'
+      - dir: input
+        name: AWLOCK_a
+        reset_value: '''b0'
+        width: '2'
+      - dir: input
+        name: AWCACHE_a
+        reset_value: '''b0'
+        width: '2'
+      - dir: input
+        name: AWPROT_a
+        reset_value: '''b0'
+        width: '3'
+      - dir: input
+        name: AWVALID_a
+        reset_value: '''b0'
+        width: '1'
+      - dir: output
+        name: AWREADY_a
+        reset_value: '''b0'
+        width: '1'
+      - dir: input
+        name: WID_a
+        reset_value: '''b0'
+        width: '4'
+      - dir: input
+        name: WDATA_a
+        reset_value: '''b0'
+        width: '64'
+      - dir: input
+        name: WSTRB_a
+        reset_value: '''b0'
+        width: '4'
+      - dir: input
+        name: WLAST_a
+        reset_value: '''b0'
+        width: '1'
+      - dir: input
+        name: WVALID_a
+        reset_value: '''b0'
+        width: '1'
+      - dir: output
+        name: WREADY_a
+        reset_value: '''b0'
+        width: '1'
+      - dir: output
+        name: BID_a
+        reset_value: '''b0'
+        width: '4'
+      - dir: output
+        name: BRESP_a
+        reset_value: '''b0'
+        width: '2'
+      - dir: output
+        name: BVALID_a
+        reset_value: '''b0'
+        width: '1'
+      - dir: input
+        name: BREADY_a
+        reset_value: '''b0'
+        width: '1'
+      - dir: input
+        name: ARID_a
+        reset_value: '''b0'
+        width: '4'
+      - dir: input
+        name: ARADDR_a
+        reset_value: '''b0'
+        width: '32'
+      - dir: input
+        name: ARLEN_a
+        reset_value: '''b0'
+        width: '4'
+      - dir: input
+        name: ARSIZE_a
+        reset_value: '''b0'
+        width: '3'
+      - dir: input
+        name: ARBURST_a
+        reset_value: '''b0'
+        width: '2'
+      - dir: input
+        name: ARLOCK_a
+        reset_value: '''b0'
+        width: '2'
+      - dir: input
+        name: ARCACHE_a
+        reset_value: '''b0'
+        width: '2'
+      - dir: input
+        name: ARPROT_a
+        reset_value: '''b0'
+        width: '3'
+      - dir: input
+        name: ARVALID_a
+        reset_value: '''b0'
+        width: '1'
+      - dir: output
+        name: ARREADY_a
+        reset_value: '''b0'
+        width: '1'
+      - dir: output
+        name: RID_a
+        reset_value: '''b0'
+        width: '4'
+      - dir: output
+        name: RDATA_a
+        reset_value: '''b0'
+        width: '64'
+      - dir: output
+        name: RRESP_a
+        reset_value: '''b0'
+        width: '2'
+      - dir: output
+        name: RLAST_a
+        reset_value: '''b0'
+        width: '1'
+      - dir: output
+        name: RVALID_a
+        reset_value: '''b0'
+        width: '1'
+      - dir: input
+        name: RREADY_a
+        reset_value: '''b0'
+        width: '1'
+      - dir: output
+        name: wr_rsp_en
+        reset_value: '''b0'
+        width: '1'
+      - dir: output
+        name: rd_rsp_en
+        reset_value: '''b0'
+        width: '1'
+      reset: ARESETn
+      reset_assertion_level: 'False'
+      transaction_constraints: []
+      transaction_vars:
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: awaddr
+        type: bit [31:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: awid
+        type: awid_e
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: awlen
+        type: bit [7:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: awsize
+        type: awsize_e
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: awburst
+        type: awburst_e
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: awlock
+        type: awlock_e
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: awcache
+        type: awcache_e
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: awqos
+        type: bit [3:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: awprot
+        type: awprot_e
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: endian
+        type: endian_e
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: wdata
+        type: bit [31:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: wstrb
+        type: bit [3:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: wlast
+        type: bit
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: wuser
+        type: bit [3:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: bid
+        type: bid_e
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'True'
+        name: bresp
+        type: bresp_e
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'True'
+        name: buser
+        type: bit [3:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'True'
+        name: arid
+        type: arid_e
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'True'
+        name: araddr
+        type: bit [31:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'True'
+        name: arlen
+        type: bit [7:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'True'
+        name: arsize
+        type: arsize_e
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'True'
+        name: arburst
+        type: arburst_e
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'True'
+        name: arlock
+        type: arlock_e
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'True'
+        name: arcache
+        type: arcache_e
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'True'
+        name: arprot
+        type: arprot_e
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: arregion
+        type: bit
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: arqos
+        type: bit [3:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'True'
+        name: rid
+        type: rid_e
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'True'
+        name: rdata
+        type: bit [31:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: rlast
+        type: bit
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: rvalid
+        type: bit
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'True'
+        name: rresp
+        type: rresp_e
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'True'
+        name: ruser
+        type: bit [3:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'True'
+        name: no_of_wait_states
+        type: int
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: tx_type
+        type: tx_type_e
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: transfer_type
+        type: transfer_type_e
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: wait_count_write_address_channel
+        type: int
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: wait_count_write_data_channel
+        type: int
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: wait_count_write_response_channel
+        type: int
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: wait_count_read_address_channel
+        type: int
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: wait_count_read_data_channel
+        type: int
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: outstanding_write_tx
+        type: int
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: outstanding_read_tx
+        type: int
+        unpacked_dimension: ''
+      use_dpi_link: 'False'

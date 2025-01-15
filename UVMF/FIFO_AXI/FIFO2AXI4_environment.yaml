@@ -1,0 +1,88 @@
+uvmf:
+  environments:
+    FIFO2AXI:
+    
+      agents:
+      - name: FIFO_agent
+        type: FIFO_in
+        initiator_responder: "INITIATOR"
+      - name: AXI4_SLAVE_agent
+        type: AXI4_SLAVE
+        initiator_responder: "RESPONDER"
+    
+      analysis_components:
+      - name: FIFO2AXI_pred
+        type: FIFO2AXI_predictor
+      analysis_exports: []
+      analysis_ports:
+      - name: FIFO_agent_ap
+        trans_type: FIFO_in_transaction
+        connected_to: FIFO_agent.monitored_ap
+    
+      config_constraints: []
+      config_vars: []
+    
+      parameters:
+      - name: FIFO_DATA_WIDTH
+        type: bit
+        value: '128'
+      - name: FIFO_ADDR_WIDTH
+        type: bit
+        value: '32'
+#      - name: AXI_DATA_WIDTH
+#        type: bit
+#        value: '32'
+      - name: AXI_ADDR_WIDTH
+        type: bit
+        value: '32'
+      - name: AXI_WID_WIDTH
+        type: bit
+        value: '4'
+      - name: AXI_LEN_WIDTH
+        type: bit
+        value: '4'
+      - name: AXI_SIZE_WIDTH
+        type: bit
+        value: '3'
+      - name: AXI_BURST_WIDTH
+        type: bit
+        value: '2'
+      - name: AXI_LOCK_WIDTH
+        type: bit
+        value: '2'
+      - name: AXI_CACHE_WIDTH
+        type: bit
+        value: '2'
+      - name: AXI_PROT_WIDTH
+        type: bit
+        value: '3'
+      - name: AXI_STRB_WIDTH
+        type: bit
+        value: '4'
+ 
+      scoreboards:
+      - name: FIFO2AXI_in_order_sb
+        sb_type: uvmf_in_order_scoreboard
+        trans_type: AXI4_SLAVE_transaction
+#      - name: FIFO2AXI_out_of_order_sb
+#        sb_type: uvmf_out_of_order_scoreboard
+#        trans_type: AXI4_SLAVE_transaction
+#      - name: FIFO2AXI_in_order_race_sb
+#        sb_type: uvmf_in_order_race_scoreboard
+#        trans_type: AXI4_SLAVE_transaction
+#      - name: FIFO2AXI_catapult_sb
+#        sb_type: uvmf_catapult_scoreboard
+#        trans_type: AXI4_SLAVE_transaction
+#      - name: FIFO2AXI_out_of_order_race_sb
+#        sb_type: uvmf_out_of_order_race_scoreboard
+#        trans_type: AXI4_SLAVE_transaction
+    
+      subenvs: []
+    
+      tlm_connections:
+      - driver: FIFO_agent.monitored_ap            
+        receiver: FIFO2AXI_pred.FIFO_agent_ae
+      - driver: FIFO2AXI_pred.FIFO2AXI_sb_ap
+        receiver: FIFO2AXI_in_order_sb.expected_analysis_export
+      - driver: AXI4_SLAVE_agent.monitored_ap
+        receiver: FIFO2AXI_in_order_sb.actual_analysis_export
